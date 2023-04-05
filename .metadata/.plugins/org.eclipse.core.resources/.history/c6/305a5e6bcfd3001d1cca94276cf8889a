@@ -1,0 +1,9 @@
+package com.robert.advancedoop;
+
+public class FrontEndDev extends Developer{
+
+	public FrontEndDev() {
+		super("Anonymous frontend dev");
+	}
+
+}

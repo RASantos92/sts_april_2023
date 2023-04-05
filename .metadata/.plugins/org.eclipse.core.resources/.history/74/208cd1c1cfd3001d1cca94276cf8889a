@@ -1,0 +1,14 @@
+package com.robert.advancedoop;
+
+public class FrontEndDev extends Developer{
+	private boolean isArtistic;
+	
+	public FrontEndDev() {
+		super("Anonymous frontend dev");
+		this.salary = 100000;
+		this.setWorkingHours(7);
+		this.isArtistic = true;
+		
+	}
+
+}
