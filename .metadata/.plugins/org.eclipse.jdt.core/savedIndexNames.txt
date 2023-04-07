@@ -9,7 +9,6 @@ INDEX VERSION 1.131+C:\Users\rasbm\OneDrive\Desktop\sts_april_2023\.metadata\.pl
 1135558592.index
 1014555357.index
 1865797976.index
-139193129.index
 92356756.index
 3209566812.index
 3112802377.index
