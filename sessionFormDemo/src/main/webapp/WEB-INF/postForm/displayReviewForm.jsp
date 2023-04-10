@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h1>movie review form details</h1>
+	<h2>reviewer: <c:out value="${reviewer}"/></h2>
 	<h3>movie: <c:out value="${movie}"/></h3>
 	<h3>rating: <c:out value="${rating}"/></h3>
 	<h3>comment: <c:out value="${comment}"/></h3>
