@@ -17,6 +17,7 @@
 			<th>Donation Name</th>
 			<th>Quantity</th>
 			<th>Donor Name</th>
+			<th>Action</th>
 		</thead>
 		<tbody>
 			<c:forEach var="donation" items="${allDonations}">
@@ -24,6 +25,12 @@
 					<td><c:out value="${donation.name}"/></td>
 					<td><c:out value="${donation.quantity}"/></td>
 					<td><c:out value="${donation.donor}"/></td>
+					<td>
+						<form action="/donations/delete/${donation.id}" method="post">
+						    <input type="hidden" name="_method" value="delete">
+						    <input type="submit" value="Delete">
+						</form>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
