@@ -1,9 +1,0 @@
-package com.robert.advancedoop;
-
-public class FrontEndDev {
-
-	public FrontEndDev() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

@@ -1,9 +1,0 @@
-package com.robert.advancedoop;
-
-public class Developer {
-
-	public Developer() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

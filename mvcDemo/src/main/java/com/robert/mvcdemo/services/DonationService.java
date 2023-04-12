@@ -41,5 +41,9 @@ public class DonationService {
 	public void deleteDonation(Long id) {
 		donationRepo.deleteById(id);
 	}
+	
+	public List<Donation> searchByDonationName(String donationName){
+		return donationRepo.findByNameContaining(donationName);
+	}
 
 }

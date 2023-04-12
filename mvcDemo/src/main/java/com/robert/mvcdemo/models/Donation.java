@@ -31,6 +31,7 @@ public class Donation {
     @Size(min = 5, max = 200, message="donation name has to be above 5 characters and below 200")
     private String name;
     
+    @NotNull
     @Min(0)
     @Max(value=100, message="the max is 100")
     private Integer quantity;

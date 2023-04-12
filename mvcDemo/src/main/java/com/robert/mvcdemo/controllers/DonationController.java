@@ -1,5 +1,7 @@
 package com.robert.mvcdemo.controllers;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.robert.mvcdemo.models.Donation;
 import com.robert.mvcdemo.services.DonationService;
@@ -27,7 +30,7 @@ public class DonationController {
 	}
 	
 	@GetMapping("/all")
-	public String allDonations(Model model) {
+	public String allDonations(Model model, @ModelAttribute("donation") Donation donation) {
 		model.addAttribute("allDonations", donationServ.getAll());
 		return "donation/showAll.jsp";
 	}
@@ -43,14 +46,27 @@ public class DonationController {
 		return "donation/create.jsp";
 	}
 	
+	@GetMapping("/search")
+	public String searchDonation(@RequestParam("searchValue") String searchValue, Model model, @ModelAttribute("donation") Donation donation) {
+		List<Donation> allDonations = donationServ.searchByDonationName(searchValue);
+		model.addAttribute("allDonations" , allDonations);
+		return "donation/showAll.jsp";
+	}
+	
+	
+	
 	@PostMapping("/process/create")
-	public String processCreateDonation(@Valid @ModelAttribute("donation") Donation newDonation, BindingResult result) {
+	public String processCreateDonation(@Valid @ModelAttribute("donation") Donation newDonation, BindingResult result,Model model) {
 		if(result.hasErrors()) {
-			return "donation/create.jsp";
+			model.addAttribute("allDonations", donationServ.getAll());
+			return "donation/showAll.jsp";
 		}
 		donationServ.create(newDonation);
 		return "redirect:/donations/all";			
 	}
+	
+	
+	
 	
 	@GetMapping("/edit/{id}")
 	public String editDonation(@PathVariable("id") Long id, Model model) {
@@ -60,7 +76,7 @@ public class DonationController {
 	}
 	
 	@PutMapping("/process/edit/{id}")
-	public String processEditDonation(@Valid @ModelAttribute("donation") Donation donation, BindingResult result, @PathVariable("id") Long id, Model model) {
+	public String processEditDonation(@Valid @ModelAttribute("donation") Donation donation, BindingResult result, @PathVariable("id") Long id) {
 		
 		if(result.hasErrors()) {
 			return "donation/edit.jsp";
@@ -68,6 +84,11 @@ public class DonationController {
 		donationServ.edit(donation);
 		return "redirect:/donations/display/" + id;
 	}
+	
+	
+	
+	
+	
 	
 	@DeleteMapping("/delete/{id}")
 	public String deleteDonation(@PathVariable("id") Long id) {

@@ -1,7 +1,0 @@
-package com.robert.advancedoop;
-
-public class Developer {
-
-	public Developer() {}
-
-}
